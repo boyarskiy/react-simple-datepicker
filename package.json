@@ -13,9 +13,10 @@
     "jsdom": "^7.2.0",
     "mocha": "^2.3.3",
     "mocha-jsdom": "^1.0.0",
+    "moment": "^2.11.1",
     "react": "^0.14.0",
-    "react-dom": "^0.14.0",
-    "react-addons-test-utils": "^0.14.3"
+    "react-addons-test-utils": "^0.14.3",
+    "react-dom": "^0.14.0"
   },
   "author": "Yevhen Boyarskiy",
   "license": "MIT"
