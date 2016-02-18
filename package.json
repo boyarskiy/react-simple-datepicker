@@ -1,14 +1,22 @@
 {
   "name": "react-simple-datepicker",
-  "version": "0.0.0",
-  "description": "",
+  "version": "1.0.0",
+  "description": "React datepicker component",
   "scripts": {
-    "test": "mocha test --compilers js:babel-core/register"
+    "test": "mocha test --compilers js:babel-core/register",
+    "lint": "eslint .",
+    "build": "npm run build:lib && npm run build:min",
+    "build:lib": "babel src --out-dir lib",
+    "build:min": "./node_modules/.bin/webpack --config webpack.config.production.js",
+    "prepublish": "npm run build"
   },
-  "dependencies": {
+  "devDependencies": {
     "babel-core": "^5.6.18",
+    "babel-eslint": "^5.0.0",
     "babel-loader": "^5.1.4",
     "babel-runtime": "^5.8.20",
+    "eslint": "^2.1.0",
+    "eslint-plugin-react": "^3.16.1",
     "expect": "^1.13.4",
     "jsdom": "^7.2.0",
     "mocha": "^2.3.3",
@@ -18,6 +26,21 @@
     "react-addons-test-utils": "^0.14.3",
     "react-dom": "^0.14.0"
   },
-  "author": "Yevhen Boyarskiy",
+  "peerDependencies": {
+    "react": "^0.14.0"
+  },
+  "keywords": [
+    "react",
+    "calendar",
+    "datepicker"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boyarskiy/react-simple-datepicker"
+  },
+  "bugs": {
+    "url": "https://github.com/boyarskiy/react-simple-datepicker/issues"
+  },
+  "author": "Eugeniy Boyarskiy",
   "license": "MIT"
 }

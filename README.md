@@ -1,3 +1,3 @@
-# react-simple-datepicker
+# React Simple DatePicker
 
 Work in progress...

@@ -80,7 +80,7 @@ export default class Calendar extends React.Component {
           <tr className='displayedMonth'>
             <td className='nav'
                 onClick={this.moveDisplayedMonth.bind(this, -1)}>
-                Nav
+                Next
             </td>
             <td className='monthName' colSpan='5'>
               {this.state.displayedMonth.format('MMMM YYYY')}
