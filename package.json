@@ -1,7 +1,8 @@
 {
   "name": "react-simple-datepicker",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "React datepicker component",
+  "main": "lib/Datepicker.js",
   "scripts": {
     "test": "mocha test --compilers js:babel-core/register",
     "lint": "eslint .",
@@ -11,6 +12,7 @@
     "prepublish": "npm run build"
   },
   "devDependencies": {
+    "babel": "^5.5.8",
     "babel-core": "^5.6.18",
     "babel-eslint": "^5.0.0",
     "babel-loader": "^5.1.4",
@@ -24,7 +26,8 @@
     "moment": "^2.11.1",
     "react": "^0.14.0",
     "react-addons-test-utils": "^0.14.3",
-    "react-dom": "^0.14.0"
+    "react-dom": "^0.14.0",
+    "webpack": "^1.12.14"
   },
   "peerDependencies": {
     "react": "^0.14.0"

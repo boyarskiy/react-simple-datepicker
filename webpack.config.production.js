@@ -6,11 +6,11 @@ module.exports = {
   entry: './src/Datepicker',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'react-simple-datepicker.js',
     publicPath: '/'
   },
   resolve: {
-    extensions: [ '', '.js', '.css' ]
+    extensions: [ '', '.js' ]
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
