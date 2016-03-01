@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
+import moment from 'moment';
 import DateInput from './DateInput';
 import Calendar from './Calendar';
 
-export default class DatePicker extends React.Component {
+export default class DatePicker extends Component {
   constructor (props) {
     super(props);
 
     this.state = {
+      date: moment(props.date),
       isCalendarOpen: false
     };
   }
@@ -47,16 +49,23 @@ export default class DatePicker extends React.Component {
     }
 
     return <Calendar ref='calendar'
-                     date={this.props.date}
+                     date={this.state.date}
                      startDate={this.props.startDate}
                      endDate={this.props.endDate}
                      selectDay={this.selectDay.bind(this)} />;
   }
 
   selectDay (date) {
-    this.props.changeDate(date, this.props.name);
+    if (this.props.changeDate) {
+      this.setState({
+        isCalendarOpen: false
+      });
+      return this.props.changeDate(date, this.props.name);
+    }
+
     this.setState({
-      isCalendarOpen: false
+      isCalendarOpen: false,
+      date: date
     });
   }
 
@@ -64,12 +73,15 @@ export default class DatePicker extends React.Component {
     return (
       <div className='datepicker'>
         <DateInput ref='dateInput'
-                   inputValue={this.props.date}
+                   inputValue={this.state.date}
                    inputOnClick={this.toggleCalendar.bind(this)} />
 
         {this.renderCalendar()}
       </div>
     );
   }
-
 }
+
+DatePicker.defaultProps = {
+  date: new Date()
+};

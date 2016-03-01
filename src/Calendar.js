@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Day from './Day';
 import {
   daysOfMonth,
   weekEnum,
-  isDateInRange,
   isDateFromNextMonth,
   isDateFromPrevMonth
 } from './utils/';
 
-export default class Calendar extends React.Component {
+export default class Calendar extends Component {
   constructor (props) {
     super(props);
 
@@ -38,26 +37,25 @@ export default class Calendar extends React.Component {
       let date = daysOfMonth[week * 7 + day];
       let disabled;
 
-      if (startDate) {
-        disabled = date.isAfter(startDate, 'day');
-      }
-
-      if (endDate) {
-        disabled = date.isBefore(endDate, 'day');
+      if (startDate && endDate) {
+        disabled = date.isBefore(startDate, 'day') || date.isAfter(endDate, 'day');
+      } else if (startDate) {
+        disabled = date.isBefore(startDate, 'day');
+      } else if (endDate) {
+        disabled = date.isAfter(endDate, 'day');
       }
 
       const dayNextMonth = isDateFromNextMonth(date, this.state.displayedMonth);
       const dayPrevMonth = isDateFromPrevMonth(date, this.state.displayedMonth);
-      const inRange = isDateInRange(this.props.date, date, startDate, endDate, disabled);
 
       return (
         <Day key={key}
-             day={date.date()}
+             day={date}
              selectDay={this.selectDay.bind(this, date)}
              disabled={disabled}
              dayPrevMonth={dayPrevMonth}
              dayNextMonth={dayNextMonth}
-             inRange={inRange} />
+             active={this.props.date} />
       );
     });
   }
@@ -78,16 +76,14 @@ export default class Calendar extends React.Component {
       <table className='calendar'>
         <thead>
           <tr className='displayedMonth'>
-            <td className='nav'
+            <td className='nav prev'
                 onClick={this.moveDisplayedMonth.bind(this, -1)}>
-                Next
             </td>
             <td className='monthName' colSpan='5'>
               {this.state.displayedMonth.format('MMMM YYYY')}
             </td>
-            <td className='nav'
+            <td className='nav next'
                 onClick={this.moveDisplayedMonth.bind(this, 1)}>
-                Prev
             </td>
           </tr>
         </thead>

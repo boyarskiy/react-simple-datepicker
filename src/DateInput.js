@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default class DateInput extends React.Component {
+export default class DateInput extends Component {
   render () {
     const { inputValue, inputOnClick } = this.props;
 
@@ -10,7 +10,8 @@ export default class DateInput extends React.Component {
                ref='dateInput'
                className='dateInput'
                value={inputValue.format('YYYY-MM-DD')}
-               onClick={inputOnClick} />
+               onClick={inputOnClick}
+               readOnly />
       </div>
     );
   }

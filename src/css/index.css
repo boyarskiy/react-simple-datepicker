@@ -33,15 +33,25 @@
 }
 
 .dayFromOtherMonth {
-  color: #666;
+  color: #ccc;
 }
 
 .dayInRange {
   background: rgba(192, 232, 250, 0.5);
 }
 
+.activeDate {
+  background: rgba(192, 232, 250, 0.5);
+}
+
 .nav {
   cursor: pointer;
+}
+.nav.prev:before {
+  content: '<';
+}
+.nav.next:before {
+  content: '>';
 }
 
 .dateInput {

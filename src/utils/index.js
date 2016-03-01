@@ -21,20 +21,6 @@ export function weekEnum (daysOfMonth) {
   return results;
 }
 
-export function isDateInRange (currentDate, date, startDate, endDate, disabled) {
-  let inRange = date.isSame(currentDate);
-
-  if (startDate) {
-    inRange = date.isSame(currentDate) || date.isAfter(currentDate) || date.isSame(startDate);
-  }
-
-  if (endDate) {
-    inRange = date.isSame(currentDate) || date.isBefore(currentDate) || date.isSame(endDate);
-  }
-
-  return !disabled ? inRange : false;
-}
-
 export function isDateFromNextMonth (date, displayedMonth) {
   return date.year() > displayedMonth.year() || date.year() ===
          displayedMonth.year() && date.month() > displayedMonth.month();
