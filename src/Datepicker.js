@@ -50,8 +50,8 @@ export default class DatePicker extends Component {
 
     return <Calendar ref='calendar'
                      date={this.state.date}
-                     startDate={this.props.startDate}
-                     endDate={this.props.endDate}
+                     minDate={this.props.minDate}
+                     maxDate={this.props.maxDate}
                      selectDay={this.selectDay.bind(this)} />;
   }
 

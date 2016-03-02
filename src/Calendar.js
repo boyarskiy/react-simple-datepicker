@@ -31,18 +31,18 @@ export default class Calendar extends Component {
 
   renderDay (daysOfMonth, week) {
     const days = [0, 1, 2, 3, 4, 5, 6];
-    const { startDate, endDate } = this.props;
+    const { minDate, maxDate } = this.props;
 
     return days.map((day, key) => {
       let date = daysOfMonth[week * 7 + day];
       let disabled;
 
-      if (startDate && endDate) {
-        disabled = date.isBefore(startDate, 'day') || date.isAfter(endDate, 'day');
-      } else if (startDate) {
-        disabled = date.isBefore(startDate, 'day');
-      } else if (endDate) {
-        disabled = date.isAfter(endDate, 'day');
+      if (minDate && maxDate) {
+        disabled = date.isBefore(minDate, 'day') || date.isAfter(maxDate, 'day');
+      } else if (minDate) {
+        disabled = date.isBefore(minDate, 'day');
+      } else if (maxDate) {
+        disabled = date.isAfter(maxDate, 'day');
       }
 
       const dayNextMonth = isDateFromNextMonth(date, this.state.displayedMonth);

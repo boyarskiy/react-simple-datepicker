@@ -5,7 +5,7 @@ import {
   weekEnum,
   isDateFromNextMonth,
   isDateFromPrevMonth
-} from '../util/';
+} from '../src/utils/';
 
 describe('Calendar utils', function () {
 
