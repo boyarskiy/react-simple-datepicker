@@ -1,5 +1,6 @@
 /dist/
 /lib/
+/demo/
 node_modules
 npm-debug.log
 example

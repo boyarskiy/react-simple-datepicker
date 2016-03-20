@@ -9,7 +9,8 @@
     "build": "npm run build:lib && npm run build:min",
     "build:lib": "babel src --out-dir lib",
     "build:min": "./node_modules/.bin/webpack --config webpack.config.production.js",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "deploy:demo": "node ./build-gh-pages.js"
   },
   "devDependencies": {
     "babel": "^5.5.8",
@@ -20,6 +21,7 @@
     "eslint": "^2.1.0",
     "eslint-plugin-react": "^3.16.1",
     "expect": "^1.13.4",
+    "gh-pages": "^0.11.0",
     "jsdom": "^7.2.0",
     "mocha": "^2.3.3",
     "mocha-jsdom": "^1.0.0",
