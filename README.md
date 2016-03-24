@@ -5,12 +5,12 @@
 
 ## Install
 
-`npm install -save react-simple-datepicker`
+`npm install --save react-simple-datepicker`
 
 
 ## Usage
 
-Simple example on how to use Datepicker.
+Simple example on how to use Datepicker. Just import DatePicker module and styles for it.
 
 ```js
 import React from 'react';
@@ -39,7 +39,23 @@ class App extends React.Component {
 * `date`: (*Date*) — specifies the start date
 * `minDate`: (*Date*) — specifies the minimal date
 * `maxDate`: (*Date*) — specifies the maximal date
-* `changeDate`: (*Function*) — called when the user selects a date
+* `clickOnDate`: (*Function*) — called when the user selects a date
+
+
+## ClassName Props
+
+To specify datepicker styles you can use these props:
+
+* `datepickerClassName`
+* `inputClassName`
+* `calendarClassName`
+* `monthClassName`
+* `prevMonthClassName`
+* `nextMonthClassName`
+* `dayClassName`
+* `dayActiveClassName`
+* `dayDisabledClassName`
+* `dayFromOtherMonthClassName`
 
 
 ## License
