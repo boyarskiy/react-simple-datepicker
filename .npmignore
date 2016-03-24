@@ -1,5 +1,6 @@
 /test/
 /example/
+/demo/
 .gitignore
 build-gh-pages.js
 npm-debug.log

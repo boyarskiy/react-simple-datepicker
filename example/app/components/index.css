@@ -1,0 +1,18 @@
+.month {
+  font-style: italic;
+  color: red;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  color: blue;
+}
+
+.prev:before {
+  content: '<';
+}
+
+.next:before {
+  content: '>';
+}
