@@ -1,38 +1,59 @@
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
 
-export default class Day extends Component {
-  handleOnClick (e) {
-    if (this.props.disabled) return;
+const Day = ({
+  day,
+  active,
+  disabled,
+  dayNextMonth,
+  dayPrevMonth,
+  selectDay,
+  dayClassName,
+  dayActiveClassName,
+  dayDisabledClassName,
+  dayFromOtherMonthClassName
+}) => {
 
-    this.props.selectDay(e);
+  const handleOnClick = (e) => {
+    if (disabled) return;
+    selectDay(e);
+  };
+
+  let classes = [dayClassName];
+
+  if (day.isSame(active, 'day')) {
+    classes.push(dayActiveClassName);
   }
 
-  render () {
-    const { day, disabled, dayNextMonth, dayPrevMonth, active } = this.props;
-
-    let classes = ['day'];
-
-    if (day.isSame(active, 'day')) {
-      classes.push('activeDate');
-    }
-
-    if (disabled) {
-      classes.push('dayDisabled');
-    }
-
-    if (dayPrevMonth || dayNextMonth) {
-      classes.push('dayFromOtherMonth');
-    }
-
-    return (
-      <td className={classes.join(' ')} onClick={this.handleOnClick.bind(this)}>{ day.date() }</td>
-    );
+  if (disabled) {
+    classes.push(dayDisabledClassName);
   }
-}
+
+  if (dayPrevMonth || dayNextMonth) {
+    classes.push(dayFromOtherMonthClassName);
+  }
+
+  return <td className={classes.join(' ')} onClick={handleOnClick}>{ day.date() }</td>;
+};
 
 Day.propTypes = {
-  disabled: React.PropTypes.bool,
-  dayNextMonth: React.PropTypes.bool,
-  dayPrevMonth: React.PropTypes.bool
+  disabled: PropTypes.bool,
+  dayNextMonth: PropTypes.bool,
+  dayPrevMonth: PropTypes.bool,
+  selectDay: PropTypes.func,
+  day: PropTypes.instanceOf(moment),
+  active: PropTypes.instanceOf(moment),  
+  dayClassName: PropTypes.string,
+  dayActiveClassName: PropTypes.string,
+  dayDisabledClassName: PropTypes.string,
+  dayFromOtherMonthClassName: PropTypes.string,
 };
+
+Day.defaultProps = {
+  dayClassName: 'calendar__day',
+  dayActiveClassName: 'calendar__activeDay',
+  dayDisabledClassName: 'calendar__disabledDay',
+  dayFromOtherMonthClassName: 'calendar__dayFromOtherMonth'
+};
+
+export default Day;

@@ -44,23 +44,45 @@ export default class DatePicker extends Component {
   }
 
   renderCalendar () {
+    const {
+      minDate,
+      maxDate,
+      calendarClassName,
+      dayClassName,
+      dayActiveClassName,
+      dayDisabledClassName,
+      dayFromOtherMonthClassName,
+      monthClassName,
+      prevMonthClassName,
+      nextMonthClassName
+    } = this.props;
+
     if (!this.state.isCalendarOpen) {
       return null;
     }
 
     return <Calendar ref='calendar'
                      date={this.state.date}
-                     minDate={this.props.minDate}
-                     maxDate={this.props.maxDate}
-                     selectDay={this.selectDay.bind(this)} />;
+                     minDate={minDate}
+                     maxDate={maxDate}
+                     selectDay={this.selectDay.bind(this)}
+                     calendarClassName={calendarClassName}
+                     dayClassName={dayClassName}
+                     dayActiveClassName={dayActiveClassName}
+                     dayDisabledClassName={dayDisabledClassName}
+                     dayFromOtherMonthClassName={dayFromOtherMonthClassName}
+                     monthClassName={monthClassName}
+                     prevMonthClassName={prevMonthClassName}
+                     nextMonthClassName={nextMonthClassName} />;
   }
 
   selectDay (date) {
-    if (this.props.changeDate) {
+    const { clickOnDate, name } = this.props;
+    if (clickOnDate) {
       this.setState({
         isCalendarOpen: false
       });
-      return this.props.changeDate(date, this.props.name);
+      return clickOnDate(date, name);
     }
 
     this.setState({
@@ -70,11 +92,14 @@ export default class DatePicker extends Component {
   }
 
   render () {
+    const { datepickerClassName, inputClassName } = this.props;
+
     return (
-      <div className='datepicker'>
+      <div className={datepickerClassName}>
         <DateInput ref='dateInput'
                    inputValue={this.state.date}
-                   inputOnClick={this.toggleCalendar.bind(this)} />
+                   inputOnClick={this.toggleCalendar.bind(this)}
+                   inputClassName={inputClassName} />
 
         {this.renderCalendar()}
       </div>
@@ -82,6 +107,34 @@ export default class DatePicker extends Component {
   }
 }
 
+DatePicker.propTypes = {
+  date: PropTypes.oneOfType([
+    PropTypes.instanceOf(moment),
+    PropTypes.instanceOf(Date)
+  ]),
+  minDate: PropTypes.oneOfType([
+    PropTypes.instanceOf(moment),
+    PropTypes.instanceOf(Date)
+  ]),
+  maxDate: PropTypes.oneOfType([
+    PropTypes.instanceOf(moment),
+    PropTypes.instanceOf(Date)
+  ]),
+  clickOnDate: PropTypes.func,
+  name: PropTypes.string,
+  datepickerClassName: PropTypes.string,
+  inputClassName: PropTypes.string,
+  calendarClassName: PropTypes.string,
+  monthClassName: PropTypes.string,
+  prevMonthClassName: PropTypes.string,
+  nextMonthClassName: PropTypes.string,
+  dayClassName: PropTypes.string,
+  dayActiveClassName: PropTypes.string,
+  dayDisabledClassName: PropTypes.string,
+  dayFromOtherMonthClassName: PropTypes.string,
+};
+
 DatePicker.defaultProps = {
-  date: new Date()
+  date: new Date(),
+  datepickerClassName: 'datepicker'
 };

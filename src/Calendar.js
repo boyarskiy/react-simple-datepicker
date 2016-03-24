@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Day from './Day';
 import {
   daysOfMonth,
@@ -6,6 +6,7 @@ import {
   isDateFromNextMonth,
   isDateFromPrevMonth
 } from './utils/';
+import moment from 'moment';
 
 export default class Calendar extends Component {
   constructor (props) {
@@ -55,7 +56,11 @@ export default class Calendar extends Component {
              disabled={disabled}
              dayPrevMonth={dayPrevMonth}
              dayNextMonth={dayNextMonth}
-             active={this.props.date} />
+             active={this.props.date}
+             dayClassName={this.props.dayClassName}
+             dayActiveClassName={this.props.dayActiveClassName}
+             dayDisabledClassName={this.props.dayDisabledClassName}
+             dayFromOtherMonthClassName={this.props.dayFromOtherMonthClassName} />
       );
     });
   }
@@ -72,17 +77,19 @@ export default class Calendar extends Component {
   }
 
   render () {
+    const { calendarClassName, monthClassName, prevMonthClassName, nextMonthClassName } = this.props;
+
     return (
-      <table className='calendar'>
+      <table className={calendarClassName}>
         <thead>
-          <tr className='displayedMonth'>
-            <td className='nav prev'
+          <tr>
+            <td className={prevMonthClassName}
                 onClick={this.moveDisplayedMonth.bind(this, -1)}>
             </td>
-            <td className='monthName' colSpan='5'>
+            <td className={monthClassName} colSpan='5'>
               {this.state.displayedMonth.format('MMMM YYYY')}
             </td>
-            <td className='nav next'
+            <td className={nextMonthClassName}
                 onClick={this.moveDisplayedMonth.bind(this, 1)}>
             </td>
           </tr>
@@ -94,3 +101,34 @@ export default class Calendar extends Component {
     );
   }
 }
+
+Calendar.propTypes = {
+  date: PropTypes.oneOfType([
+    PropTypes.instanceOf(moment),
+    PropTypes.instanceOf(Date)
+  ]),
+  minDate: PropTypes.oneOfType([
+    PropTypes.instanceOf(moment),
+    PropTypes.instanceOf(Date)
+  ]),
+  maxDate: PropTypes.oneOfType([
+    PropTypes.instanceOf(moment),
+    PropTypes.instanceOf(Date)
+  ]),
+  calendarClassName: PropTypes.string,
+  selectDay: PropTypes.func,
+  monthClassName: PropTypes.string,
+  prevMonthClassName: PropTypes.string,
+  nextMonthClassName: PropTypes.string,
+  dayClassName: PropTypes.string,
+  dayActiveClassName: PropTypes.string,
+  dayDisabledClassName: PropTypes.string,
+  dayFromOtherMonthClassName: PropTypes.string,
+};
+
+Calendar.defaultProps = {
+  calendarClassName: 'calendar',
+  prevMonthClassName: 'calendar__prevMonth',
+  nextMonthClassName: 'calendar__nextMonth',
+  monthClassName: 'calendar__month'
+};
