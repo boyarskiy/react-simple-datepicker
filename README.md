@@ -14,7 +14,6 @@ Simple example on how to use Datepicker. Just import DatePicker module and style
 
 ```js
 import React from 'react';
-import ReactDOM from 'react-dom';
 import DatePicker from 'react-simple-datepicker';
 import 'react-simple-datepicker/dist/index.css';
 
