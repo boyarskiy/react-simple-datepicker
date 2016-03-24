@@ -21,40 +21,43 @@
   padding: 10px 0;
 }
 
-.day {
+.calendar__day {
   font-size: 13px;
   cursor: pointer;
   padding: 7px 9px 6px;
   border: solid 1px #eee;
 }
 
-.dayDisabled {
+.calendar__disabledDay {
   opacity: 0.3;
 }
 
-.dayFromOtherMonth {
+.calendar__dayFromOtherMonth {
   color: #ccc;
 }
 
-.dayInRange {
+.calendar__dayInRange {
   background: rgba(192, 232, 250, 0.5);
 }
 
-.activeDate {
+.calendar__activeDay {
   background: rgba(192, 232, 250, 0.5);
 }
 
-.nav {
+.calendar__prevMonth,
+.calendar__nextMonth {
   cursor: pointer;
 }
-.nav.prev:before {
+
+.calendar__prevMonth:before {
   content: '<';
 }
-.nav.next:before {
+
+.calendar__nextMonth:before {
   content: '>';
 }
 
-.dateInput {
+.datepicker__input {
   position: relative;
   width: 100px;
   margin: 5px;
