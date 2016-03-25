@@ -232,3 +232,41 @@ a {
 @media screen and (max-width: 42em) {
   .site-footer {
     font-size: 0.9rem; } }
+
+.demos {
+  margin-left: 0;
+  padding-left: 0;
+}
+.demos h3 {
+  font-size: 14px;
+}
+.demos li {
+  display: inline-block;
+  vertical-align: top;
+  width: 150px;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.datepicker input {
+  font-size: 12px;
+}
+
+.month {
+  font-style: italic;
+  color: #159957;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  color: #159957;
+}
+
+.prev:before {
+  content: '<';
+}
+
+.next:before {
+  content: '>';
+}
