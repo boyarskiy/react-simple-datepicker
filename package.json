@@ -18,6 +18,7 @@
     "babel-eslint": "^5.0.0",
     "babel-loader": "^5.1.4",
     "babel-runtime": "^5.8.20",
+    "enzyme": "^2.3.0",
     "eslint": "^2.1.0",
     "eslint-plugin-react": "^3.16.1",
     "expect": "^1.13.4",
