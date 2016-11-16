@@ -65,6 +65,17 @@ export default class Calendar extends Component {
     });
   }
 
+  renderNameOfDays () {
+    const nameOfDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    return (
+      <tr className='calendar__nameofdays'>
+        {
+          nameOfDays.map((day, i) => <td key={i}>{ day }</td>)
+        }
+      </tr>
+    );
+  }
+
   moveDisplayedMonth (delta) {
     const dm = this.state.displayedMonth;
     this.setState({
@@ -80,7 +91,7 @@ export default class Calendar extends Component {
     const { calendarClassName, monthClassName, prevMonthClassName, nextMonthClassName } = this.props;
 
     return (
-      <table className={calendarClassName}>
+      <table className={calendarClassName} cellPadding='0' cellSpacing='0'>
         <thead>
           <tr>
             <td className={prevMonthClassName}
@@ -95,7 +106,8 @@ export default class Calendar extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.renderWeeks()}
+          { this.renderNameOfDays() }
+          { this.renderWeeks() }
         </tbody>
       </table>
     );

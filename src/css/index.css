@@ -8,9 +8,10 @@
   top: 38px;
   left: 3px;
   width: 230px;
+  padding: 6px 0;
   z-index: 9999;
-  border: solid 1px #eee;
-  background: #fff;
+  color: #fff;
+  background: #44c8f9;
 }
 
 .calendar td {
@@ -24,8 +25,11 @@
 .calendar__day {
   font-size: 13px;
   cursor: pointer;
-  padding: 7px 9px 6px;
-  border: solid 1px #eee;
+  padding: 11px 12px 9px;
+}
+
+.calendar__day:hover {
+  background: rgba(192, 232, 250, 0.5);
 }
 
 .calendar__disabledDay {
@@ -33,7 +37,7 @@
 }
 
 .calendar__dayFromOtherMonth {
-  color: #ccc;
+  color: #ddd;
 }
 
 .calendar__dayInRange {
@@ -49,12 +53,26 @@
   cursor: pointer;
 }
 
+.calendar__prevMonth:hover,
+.calendar__nextMonth:hover {
+  background: rgba(192, 232, 250, 0.5);
+}
+
 .calendar__prevMonth:before {
   content: '<';
 }
 
 .calendar__nextMonth:before {
   content: '>';
+}
+
+.calendar__nameofdays {
+  font-size: 11px;
+  background: #35b1e2;
+}
+
+.calendar__nameofdays td {
+  padding: 7px 12px 6px;
 }
 
 .datepicker__input {
