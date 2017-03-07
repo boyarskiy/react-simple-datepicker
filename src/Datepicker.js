@@ -15,13 +15,17 @@ export default class DatePicker extends Component {
   }
 
   componentWillMount () {
-    document.addEventListener('mousedown', this.onClickOutside.bind(this));
-    document.addEventListener('touchstart', this.onClickOutside.bind(this));
+    if (typeof window !== 'undefined') {
+      document.addEventListener('mousedown', this.onClickOutside.bind(this));
+      document.addEventListener('touchstart', this.onClickOutside.bind(this));
+    }
   }
 
   componentWillUnmount () {
-    document.removeEventListener('mousedown', this.onClickOutside.bind(this));
-    document.removeEventListener('touchstart', this.onClickOutside.bind(this));
+    if (typeof window !== 'undefined') {
+      document.removeEventListener('mousedown', this.onClickOutside.bind(this));
+      document.removeEventListener('touchstart', this.onClickOutside.bind(this));
+    }
   }
 
   onClickOutside (e) {
