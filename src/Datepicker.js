@@ -82,17 +82,17 @@ export default class DatePicker extends Component {
 
   selectDay (date) {
     const { clickOnDate, name } = this.props;
-    if (clickOnDate) {
-      this.setState({
-        isCalendarOpen: false
-      });
-      return clickOnDate(date, name);
-    }
 
     this.setState({
       isCalendarOpen: false,
       date: date
     });
+
+    if (clickOnDate) {
+      return clickOnDate(date, name);
+    }
+
+    
   }
 
   render () {
